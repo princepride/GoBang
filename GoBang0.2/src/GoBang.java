@@ -72,6 +72,9 @@ public class GoBang extends JFrame{
 	public void launch() {
 		setBounds(0, 0, 1200, 800);
 		setVisible(true);
+		graphMatrix[7][7] = 2;
+		memory[stepNum]=new Step(7,7);
+		stepNum += 1;
 		createWayOfWin();
 /*		for(int i=0;i<572;i++) {
 			for(int j=0;j<5;j++) {
@@ -94,12 +97,21 @@ public class GoBang extends JFrame{
 				// TODO Auto-generated method stub
 				super.keyPressed(e);
 				if(e.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
-					if(stepNum>0) {
+					if(stepNum>2) {
+						stepNum--;
+						graphMatrix[memory[stepNum].y][memory[stepNum].x]=0;
+						turn=!turn;
 						stepNum--;
 						graphMatrix[memory[stepNum].y][memory[stepNum].x]=0;
 						turn=!turn;
 						repaint();
 					}
+					//if(stepNum>0) {
+					//	stepNum--;
+					//	graphMatrix[memory[stepNum].y][memory[stepNum].x]=0;
+					//	turn=!turn;
+					//	repaint();
+					//}
 				}
 			}
 			
